@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Arduino General Examples by tigoe</title>
+    <title>LED Chaser by tigoe</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,8 +15,8 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Arduino General Examples</h1>
-        <p>General examples for Arduino</p>
+        <h1>LED Chaser</h1>
+        <p>LED Chaser project</p>
 
         <p class="view"><a href="https://github.com/tigoe/ArduinoGeneralExamples">View the Project on GitHub <small>tigoe/ArduinoGeneralExamples</small></a></p>
 
@@ -28,9 +28,25 @@
         </ul>
       </header>
       <section>
-        <h2>Welcome to my Arduino General Examples repository</h2>
+        <h2>LED Chaser</h2>
 
-<p>This is a repository for general examples in Arduino. I have other repos for network examples, sensor examples, and so forth. This is for examples I get asked about frequently, but don't have an easy category.</p>
+<p>This example shows you how to use digitalRead() and digitalWrite() to read digital inputs (i.e. switches and pushbuttons) and control digital outputs (i.e. LEDs etc).  It's about as simple as you get for an Arduino project, a decent place to begin.</p>
+
+<p>This project uses a tilt switch to control seven LEDs turning on and off in a linear chase.  The direction of the LEDs' chase will change depending on the state of the tilt switch.</p>
+
+<h3>The Circuit</h3>
+
+<p>First, attach the anodes of seven LEDs to digital pins 2 through 8 of your Arduino. Put 220-ohm resistors in series with the LEDs, to connect them to ground.</p>
+
+<p>NExt, attach one side of a tilt switch to +5V.  Connect the other side of the switch to digital pin 10.  Attach a 10-kilohm resistor in series with the switch to ground.  The images below show you how it should look.</p>
+
+<p>Here's what it looks like on a breadboard:
+<img width="60%" src="https://raw.github.com/tigoe/ArduinoGeneralExamples/master/LedChaser/LedChaser_bb.png" alt="The breadboard view of the circuit"></p>
+
+<p>And here's the schematic view:
+<img width="60%" src="https://raw.github.com/tigoe/ArduinoGeneralExamples/master/LedChaser/LedChaser_schem.png" alt></p>
+
+<p>The code can be found in this repository.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/tigoe">tigoe</a></p>
