@@ -38,7 +38,7 @@ void loop() {
     Serial.println(brightness);
 
     // set the LED:
-    analogWrite(LED, brightness);
+    analogWrite(ledNumber, brightness);
   }
 }
 
