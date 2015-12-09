@@ -8,7 +8,7 @@ void setup() {
   Serial.begin(9600);          // initialize serial
   pinMode(13, OUTPUT);         // set the LED to be an output
   ledTimer.set(blink, 2000);   // timer's callback function is blink, interval is 2000ms
-  motorTimer.set(spin, 1000);  // timer's callback function is spin, interval is 2000ms
+  motorTimer.set(spin, 1000);  // timer's callback function is spin, interval is 1000ms
 }
 
 void loop() {
@@ -24,7 +24,7 @@ void blink() {
 }
 
 void spin() {
-  Serial.println("motor is spinning");
+  Serial.println("motor is spinning");    // stub function for now
 }
 
 
