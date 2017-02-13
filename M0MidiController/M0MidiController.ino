@@ -1,5 +1,5 @@
 /*
-  4-key MIDI piano controller 
+  4-key MIDI piano controller
 
   Reads four pushbuttons, and when any of them have changed, sends
   MIDI noteon or noteoff messages. Sends an all notes off message
@@ -7,18 +7,19 @@
 
   With four buttons, there are 2^4, or 16, combinations. Each
   combination plays a different note, starting from the base note.
-  
+
   Uses Serial1 for MIDI, so will work on any board with 2 hardware serial ports
 
   created 13 Feb 2017
   by Tom Igoe
- */
+*/
 
 int keys[] = {5, 6, 9, 10};   // four pins for pushbuttons (keys)
 int lastKeyState;             // previous state of the keys
 int keyCount = 4;             // number of keys
 int baseNote = 48;            // C4, used as the base note
 int lastNote = 0;             // last note played
+int lastpitchBendSensor = 0;
 
 void setup() {
   Serial.begin(9600);                  // initialize serial
@@ -37,6 +38,17 @@ void loop() {
     bitWrite(currentKeyState, k, thisKey); // write it to currentKeyState
   }
 
+  // read a 10-bit analog input and convert it to
+  // 2 7-bit bytes, to send as the least significant byte (lsb)
+  // and most significant byte (msb) of a pitch bend message:
+  int pitchBendSensor = analogRead(A0);          // read analog input
+  if (pitchBendSensor > 10 && lastNote !=0) {    // if it's > 10 and there's a note playing
+    byte msb = highByte(pitchBendSensor << 1);   // get the high bits
+    byte lsb = lowByte(pitchBendSensor);         // get the low 8 bits
+    bitWrite(lsb, 7, 0);                         // clear the top bit
+    midiCommand(0xE0, lsb, msb);                 // send the pitch bend message
+  }
+
   // if the state of any of the keys has changed,
   // either play or release a note:
   if (currentKeyState != lastKeyState) {         // if any keys have changed
@@ -52,7 +64,8 @@ void loop() {
       // then a key has been released
       midiCommand(0x80, lastNote, 127);          // send noteOff (0x80);                          // clear lastNote
       Serial.print(lastNote, HEX);               // print last note
-      Serial.println(" off");       
+      Serial.println(" off");
+      lastNote = 0;
     }
   }
 
@@ -63,7 +76,7 @@ void loop() {
     midiCommand(0xB0, 0x7B, 0x00);
     Serial.println("all notes off");
   }
-  
+
   // save the state of all keys for next time:
   lastKeyState = currentKeyState;               // save previous state of keys
 }
