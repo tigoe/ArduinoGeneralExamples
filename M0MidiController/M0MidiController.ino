@@ -27,7 +27,7 @@ void setup() {
 
   for (int k = 0; k < keyCount; k++) { // iterate over the keys
     pinMode(keys[k], INPUT);           // make each an input
-  }
+  } 
 }
 
 void loop() {
