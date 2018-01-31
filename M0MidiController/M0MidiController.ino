@@ -37,18 +37,18 @@ void loop() {
     currentKeyState[k] = digitalRead(keys[k]); // read each key
 
     if (currentKeyState[k] != lastKeyState[k]) {// if a key has changed
-    int thisNote = k + baseNote;                // calculate note
-    int thisCommand = 0;
-    if (currentKeyState[k] == HIGH ) {          // if key is pressed
+      int thisNote = k + baseNote;                // calculate note
+      int thisCommand = 0;
+      if (currentKeyState[k] == HIGH ) {          // if key is pressed
         thisCommand = 0x90;                     // command is noteOn
         Serial.print(" on: ");
       } else {                                  // if key is released
         thisCommand = 0x80;                     // command is noteOff
         Serial.print("off: ");
       }
-    
+
       midiCommand(thisCommand, thisNote, 127);  // play or stop the note
-      Serial.println(thisNote, HEX);            // print last note
+      Serial.println(thisNote, HEX);            // print note
       lastKeyState[k] = currentKeyState[k];     // save key state for next time
     }
   }
@@ -57,15 +57,16 @@ void loop() {
   // 2 7-bit bytes, to send as the least significant byte (lsb)
   // and most significant byte (msb) of a pitch bend message:
   int pitchBendSensor = analogRead(A0);          // read analog input
-  if (pitchBendSensor > 10 ) {   // if it's > 10 
+  if (pitchBendSensor > 10 ) {                   // if it's > 10
     byte msb = highByte(pitchBendSensor << 1);   // get the high bits
     byte lsb = lowByte(pitchBendSensor);         // get the low 8 bits
     bitWrite(lsb, 7, 0);                         // clear the top bit
     midiCommand(0xE0, lsb, msb);                 // send the pitch bend message
   }
-  
-//     midiCommand(0xB0, 0x7B, 0x00);
-//    Serial.println("all notes off");
+
+  // when all else fails, turn everything off:
+  // midiCommand(0xB0, 0x7B, 0x00);
+  // Serial.println("all notes off");
 }
 
 // send a 3-byte midi message
