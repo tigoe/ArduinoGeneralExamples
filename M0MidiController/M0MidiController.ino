@@ -11,7 +11,7 @@
   Uses Serial1 for MIDI, so will work on any board with 2 hardware serial ports
 
   created 13 Feb 2017
-  modified 26 Jan 2018
+  modified 19 Feb 2018
   by Tom Igoe
 */
 
@@ -56,12 +56,13 @@ void loop() {
   // read a 10-bit analog input and convert it to
   // 2 7-bit bytes, to send as the least significant byte (lsb)
   // and most significant byte (msb) of a pitch bend message:
-  int pitchBendSensor = analogRead(A0);          // read analog input
-  if (pitchBendSensor > 10 ) {                   // if it's > 10
-    byte msb = highByte(pitchBendSensor << 1);   // get the high bits
-    byte lsb = lowByte(pitchBendSensor);         // get the low 8 bits
-    bitWrite(lsb, 7, 0);                         // clear the top bit
-    midiCommand(0xE0, lsb, msb);                 // send the pitch bend message
+  int sensorReading = analogRead(A0);        // read analog input
+  if (sensorReading > 10 ) {                 // if it's > 10
+    int pitchBend = sensorReading << 5;      // shift so top bit is bit 14
+    byte msb = highByte(pitchBend);          // get the high bits
+    byte lsb = lowByte(pitchBend >> 1);      // get the low 8 bits
+    bitWrite(lsb, 7, 0);                     // clear the top bit
+    midiCommand(0xE0, lsb, msb);             // send the pitch bend message
   }
 
   // when all else fails, turn everything off:
