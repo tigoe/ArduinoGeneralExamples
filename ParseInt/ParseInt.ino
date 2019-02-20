@@ -8,9 +8,8 @@ void setup() {
 
 void loop() {
   // look for an integer in the incoming serial string:
-  int x = Serial.parseInt();
-  // only take it if it's > 0::
-  if (x > 0 ) {
+  while (Serial.available()) {
+    int x = Serial.parseInt();
     Serial.println(x);
   }
 }
