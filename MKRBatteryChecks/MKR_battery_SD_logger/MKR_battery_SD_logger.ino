@@ -1,6 +1,7 @@
 /*
    Battery voltage logger for MKR Zero/1010 etc
 
+   Creating a FAT16/FAT32 SD card to work with the library on MacOS:
    On the mac terminal, list your disks:
    $ diskutil list
    You should get a response like this:
@@ -8,12 +9,12 @@
   etc.
 
    Then format your disk:
-
    $ sudo diskutil eraseDisk FAT32 DISKNAME MBRFormat /dev/disk2
+  
    DISKNAME needs to be all caps, 8 characters or less.
    /dev/disk2 comes from the list you got from diskutil list
 
-   create d10 April 2019
+   created 10 April 2019
    by Tom Igoe
 */
 #include <SD.h>
@@ -28,6 +29,7 @@ String logFile = "DATALOG.CSV";
 
 void setup() {
   Serial.begin(9600);
+  while (!Serial);
   // initialize SD card:
   SDAvailable = SD.begin(SD_CHIP_SELECT);
   Serial.println("Card working: " + String(SDAvailable));
