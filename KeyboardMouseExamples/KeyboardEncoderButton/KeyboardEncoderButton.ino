@@ -13,6 +13,7 @@
     - pushbutton attached to pin 3, connected to ground
 
   created 23 Feb 2019
+  modified 23 Feb 2020
   by Tom Igoe
 */
 
@@ -42,7 +43,7 @@ void loop() {
   // if the button has changed:
   if (buttonState != lastButtonState) {
     // debounce the button:
-    delay(10);
+    delay(4);
     // if button is pressed:
     if (buttonState == LOW) {
       // write the current character and take a timestamp:
@@ -91,7 +92,7 @@ void loop() {
         break;
       default:
         // delete, then print character, then advance
-        Keyboard.write(8);
+        Keyboard.write(KEY_DELETE);
         Keyboard.write(character);
         break;
     }
