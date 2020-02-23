@@ -18,6 +18,7 @@
 
 */
 
+#include <Mouse.h>
 int lastButton = HIGH;
 
 void setup() {
