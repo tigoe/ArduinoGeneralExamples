@@ -4,6 +4,10 @@ These examples show how to use the [Keyboard](https://www.arduino.cc/reference/e
 
 These should all work on SAMD Arduino boards (MKR series, Nano 33 IoT), Leonardo, Due, and other USB-native boards. 
 
+## Note on Mouse, Keyboard, and Serial Ports
+
+The Mouse and Keyboard libraries on the SAMD boards (MKRZero, MKR1xxx, Nano 33IoT) have an unusual behavior: using them changes the serial port enumeration. When you include the Keyboard library in a sketch, your board's serial port number will change. For example, on MacOS, if the port number is `/dev/cu.usbmodem14101`, then adding the Keyboard library will change it to `/dev/cu.usbmodem14102`. Removing the Keyboard library will change it back to `/dev/cu.usbmodem14101`. Similarly, if you double-tap the reset button to put the board in bootloader mode, the serial port will re-enumerate to its original number.
+
 ## Recovering From a Runaway HID Sketch
 
 Programs which control your keyboard and mouse can make development difficult or impossible if you make a mistake in your code. If you create a mouse or keyboard example that doesn't do what you want it to, and you need to reprogram your microcontroller to stop the program, do this:
