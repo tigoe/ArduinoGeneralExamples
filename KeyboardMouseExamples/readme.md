@@ -30,4 +30,4 @@ Once you've got the blank sketch on the board, review the logic of your mistaken
 
 ## Add an HID Enable Button
 
-You don't have to control the mouse or keyboard all the time in your sketch. If you add a pushbutton whose function is to enable or disable Mouse and Keyboard, you can experiment with all kinds of things in your sketch and still have a way to disengage keyboard and mouse control. It's not a bad idea to put this button on an interrupt pin so that the button will do its job no matter what.  The HIDEnabler sketch shows one way to implement this.
+You don't have to control the mouse or keyboard all the time in your sketch. If you add a pushbutton whose function is to enable or disable Mouse and Keyboard, you can experiment with all kinds of things in your sketch and still have a way to disengage keyboard and mouse control. It's not a bad idea to put this button on an interrupt pin so that the button will do its job no matter what.  The [HIDEnable](https://github.com/tigoe/ArduinoGeneralExamples/tree/master/KeyboardMouseExamples/HIDEnable) sketch shows one way to implement this.
