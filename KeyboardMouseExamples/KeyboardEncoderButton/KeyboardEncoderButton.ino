@@ -92,7 +92,7 @@ void loop() {
         break;
       default:
         // delete, then print character, then advance
-        Keyboard.write(KEY_DELETE);
+        Keyboard.write(8);
         Keyboard.write(character);
         break;
     }
