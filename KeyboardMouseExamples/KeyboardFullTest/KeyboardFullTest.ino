@@ -82,7 +82,7 @@ void setup() {
 }
 
 void loop() {
-press all the printable ASCII characters:
+//press all the printable ASCII characters:
   for (int k = ' '; k < '~'; k++) {
     if (!Serial) return;
     Keyboard.press(k);
