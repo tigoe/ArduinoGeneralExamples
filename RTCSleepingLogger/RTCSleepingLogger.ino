@@ -44,7 +44,7 @@ void setup() {
   if (Serial) Serial.println("card initialized.");
   
   rtc.begin();                      // start the realtime clock
-  rtc.setAlarmSeconds(00);          // set an alarm for processor wakeup
+  rtc.setAlarmTime(00,00,00);          // set an alarm for processor wakeup
   rtc.enableAlarm(rtc.MATCH_MMSS);  // enable it for once an hour
   rtc.attachInterrupt(alarmMatch);  // have the wakeup happen on the alarm
 }
@@ -57,7 +57,7 @@ void loop() {
       writeToCard(tempNow, timestamp);    // write temp and time to SD card
     }
     logging = false;                      // clear the logging flag
-    rtc.enableAlarm(rtc.MATCH_SS);        // enable alarms again
+    rtc.enableAlarm(rtc.MATCH_MMSS);        // enable alarms again
   }
 
   // if not logging, go to sleep on the 10th second of the minute:
@@ -133,7 +133,9 @@ bool writeToCard(float temp, String datetime) {
   // filename is 8.3: 8chars, 3 chars in extension max.
   String fileName = "20";
   fileName += rtc.getYear();
+  if (rtc.getDay() < 10) fileName += "0";
   fileName += rtc.getDay();
+  if (rtc.getMonth() < 10) fileName += "0";
   fileName += rtc.getMonth();
   fileName += ".txt";
   File dataFile = SD.open(fileName, FILE_WRITE);
