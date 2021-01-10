@@ -1,12 +1,13 @@
 
-/* QR Code generator for eInk Display
+/*
+  QR Code generator for eInk Display
    Displays a QR code on an eInk display
    Uses Adafruit EPD library: http://librarymanager/All#Adafruit_EPD
    and Richard Moore's qrcode library: http://librarymanager/All#qrcode
    Code is based on qrcode library example and Adafruit_EPD example.
 
    To test, enter a text string, then scan it with your mobile device
-  
+
   created 8 Jan 2021
   by Tom Igoe
 */
@@ -14,11 +15,13 @@
 #include "Adafruit_EPD.h"
 #include "qrcode.h"
 
+// pin numbers. In addition to these, the SPI pins
+// must be connected, and note that EPD_CS is the SPI CS pin:
 const int EPD_CS = 10;
 const int  EPD_DC = 9;
 const int  SRAM_CS = 8;
 const int  EPD_RESET = 7;
-const int EPD_BUSY = 6; // for faster response, attach this to a pin
+const int EPD_BUSY = 6; // optional. for faster response, attach this to a pin
 
 // You may need to use a different initializer depending on your screen.
 // This works for 1.54 inch x 1.54 inch displays:
@@ -54,7 +57,7 @@ void loop() {
   // settings will get you about 100 bytes:
   int qrVersion = 4;
   // can be ECC_LOW, ECC_MEDIUM, ECC_QUARTILE and ECC_HIGH (0-3, respectively):
-  int qrErrorLevel = ECC_LOW;  
+  int qrErrorLevel = ECC_LOW;
 
   // allocate QR code memory:
   byte qrcodeBytes[qrcode_getBufferSize(qrVersion)];
