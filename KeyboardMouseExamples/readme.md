@@ -6,7 +6,22 @@ These should all work on SAMD Arduino boards (MKR series, Nano 33 IoT), Leonardo
 
 ## Note on Mouse, Keyboard, and Serial Ports
 
-The Mouse and Keyboard libraries on the SAMD boards (MKRZero, MKR1xxx, Nano 33IoT) have an unusual behavior: using them changes the serial port enumeration. When you include the Keyboard library in a sketch, your board's serial port number will change. For example, on MacOS, if the port number is `/dev/cu.usbmodem14101`, then adding the Keyboard library will change it to `/dev/cu.usbmodem14102`. Removing the Keyboard library will change it back to `/dev/cu.usbmodem14101`. Similarly, if you double-tap the reset button to put the board in bootloader mode, the serial port will re-enumerate to its original number.
+The Mouse and Keyboard libraries on the SAMD boards USB-native have an unusual behavior: using them changes the serial port enumeration. When you include the Keyboard library in a sketch, your board's serial port number will change. For example, on MacOS, if the port number is `/dev/cu.usbmodem14101`, then adding the Keyboard library will change it to `/dev/cu.usbmodem14102`. Removing the Keyboard library will change it back to `/dev/cu.usbmodem14101`. Similarly, if you double-tap the reset button to put the board in bootloader mode, the serial port will re-enumerate to its original number.
+
+## Note for Windows Users
+
+Windows won't automatically recognize your Arduino as a new composite device (e.g. a Mouse and a COM port) when you use these libraries. You need to make some driver changes. [This page explains it](https://github.com/arduino/ArduinoCore-samd/releases/tag/1.8.2) pretty well. In summary, you need to:
+
+* Upload your first Mouse or Keyboard sketch
+* Open the Windows System Control panel Device manager 
+* Under COM ports, choose your device, which should be marked with a yellow exclamation point indicating Windows can't find the drivers. 
+* In the resulting window, click the Driver tab and select "Update Driver"
+* Select "Browse My Computer for Driver Software"
+* Select "Let me pick from a list of available drivers on my computer"
+* Select "USB Input device"
+
+You will have to do this each time you upload new code, so it's wise to work out your sketch using serial output, then switch to USB when you know the logic of the sketch works. 
+
 
 ## Recovering From a Runaway HID Sketch
 
