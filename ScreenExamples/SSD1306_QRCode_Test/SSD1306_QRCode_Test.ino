@@ -25,11 +25,18 @@ void setup() {
   Serial.begin(9600);
   Serial.setTimeout(10);
   // start the display:
-  display.begin();
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C, true);
 
   // wait for serial monitor to open:
   while (!Serial);
+  Serial.print(display.height());
+  Serial.print("x");
+  Serial.println(display.width());
+  display.clearDisplay();
+  display.display();
+
   Serial.println("Enter a text message to display:");
+
 }
 
 void loop() {
@@ -49,7 +56,7 @@ void loop() {
   // settings will get you about 100 bytes:
   int qrVersion = 4;
   // can be ECC_LOW, ECC_MEDIUM, ECC_QUARTILE and ECC_HIGH (0-3, respectively):
-  int qrErrorLevel = ECC_LOW;
+  int qrErrorLevel = ECC_HIGH;
 
   // allocate QR code memory:
   byte qrcodeBytes[qrcode_getBufferSize(qrVersion)];
@@ -59,6 +66,7 @@ void loop() {
   // QR code needs a "quiet zone" of empty space around it, hence the offset:
   int offset = 10;
   int blockSize = (display.height() - (offset * 2)) / qrcode.size;
+  display.clearDisplay();
 
   // read the bytes of the QR code and set the blocks light or dark, accordingly:
   // vertical loop:

@@ -26,10 +26,17 @@ const int EPD_BUSY = 6; // optional. for faster response, attach this to a pin
 // You may need to use a different initializer depending on your screen.
 // This works for 1.54 inch x 1.54 inch displays:
 Adafruit_IL0373 display(152, 152, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, EPD_BUSY);
+//Adafruit_SSD1680 display(152, 152, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, EPD_BUSY);
+//Adafruit_UC8151D display(152, 152, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, EPD_BUSY);
+//Adafruit_SSD1608 display(200, 200, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, EPD_BUSY);
+//Adafruit_SSD1681 display(200, 200, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, EPD_BUSY);
+//Adafruit_IL0373 display(296, 128, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, EPD_BUSY);
+//#define FLEXIBLE_290
 
 void setup() {
   Serial.begin(9600);
   Serial.setTimeout(10);
+  while(!Serial);
   // start the display:
   display.begin();
   display.clearBuffer();
