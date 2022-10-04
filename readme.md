@@ -27,5 +27,3 @@
 * bitMasking
 * bitShifting
 * joystick-imu
-* readme.md
-* 
