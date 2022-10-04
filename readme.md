@@ -1,6 +1,6 @@
 # Arduino General Examples
 
-* [6-channel-LED]({{repo-url}}/6-channel-LED) - fades 6 channels of LEDs with a for loop
+* [6-channel-LED]({{site.codeurl}}/6-channel-LED) - fades 6 channels of LEDs with a for loop
 * DACAnalogWrite
 * EmicAnalogReadSerial
 * EmicSoftwareSerial
