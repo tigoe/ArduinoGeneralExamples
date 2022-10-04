@@ -1,6 +1,6 @@
 
-Various Arduino Examples that don't have a place in some of my other repositories. 
-
+<br \>
+<br \>
 * [6-channel-LED]({{site.codeurl}}/6-channel-LED) - fades 6 channels of LEDs with a for loop
 * [bitMasking]({{site.codeurl}}/bitMasking) -  Bit masking to determine which bits of a byte are set.
 * [bitShifting]({{site.codeurl}}/bitShifting) - Bit shifting to move a bit through the positions in a byte
