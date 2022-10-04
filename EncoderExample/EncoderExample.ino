@@ -3,7 +3,7 @@
 
   Many encoders change 4 steps per detent step. This sketch reads
   an encoder and prints the direction of change when it's been
-  turned one  detent step.
+  turned one detent step.
 
   created 17 June 2019
   by Tom Igoe
