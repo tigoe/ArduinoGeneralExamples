@@ -1,4 +1,4 @@
-# Arduino General Examples
+
 
 * [6-channel-LED]({{site.codeurl}}/6-channel-LED) - fades 6 channels of LEDs with a for loop
 * [DACAnalogWrite]({{site.codeurl}}/DACAnalogWrite) -  Reads an analog input, uses it to set the voltage attached to the DAC on pin A0 of the SAMD-based boards.
