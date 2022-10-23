@@ -4,8 +4,7 @@
 * [bitMasking]({{site.codeurl}}/bitMasking) -  Bit masking to determine which bits of a byte are set.
 * [bitShifting]({{site.codeurl}}/bitShifting) - Bit shifting to move a bit through the positions in a byte
 * [DACAnalogWrite]({{site.codeurl}}/DACAnalogWrite) -  Reads an analog input, uses it to set the voltage attached to the DAC on pin A0 of the SAMD-based boards.
-* [EmicAnalogReadSerial]({{site.codeurl}}/EmicAnalogReadSerial) - Reads an analog input on pin 0 and sends it to an [Emic 2 Text-to-speech module](https://www.sparkfun.com/products/11711) via Serial1 (works only on boards with a second hardware serial port: SAMD, 32U4, etc)
-* [EmicSoftwareSerial]({{site.codeurl}}/ EmicSoftwareSerial) - Emic 2 example on SoftwareSerial, for the Uno and other boards with only one hardware serial port.
+* [Emic2]({{site.codeurl}}/Emic2) - examples with the Emic2 Text to Speech generator
 * [EncoderAndButtonExample]({{site.codeurl}}/EncoderAndButtonExample) - reading a rotary encoder and its included pushbutton using Paul Stoffregen's Encoder library.
 * [EncoderExample]({{site.codeurl}}/EncoderExample) -  Many encoders change 4 steps per detent step. This sketch reads an encoder and prints the direction of change when it's been turned one detent step using Paul Stoffregen's Encoder library.
 * [EncoderLEDControl]({{site.codeurl}}/EncoderLEDControl) - Reads an encoder and its pushbutton and uses the changes to control an LED. 
