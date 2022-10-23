@@ -6,8 +6,7 @@
   (https://www.sparkfun.com/products/11711)
   This is the minimal example for the Emic module.
 
-  Note: Serial1 is only available on the MKR boards, the Leonardo, the
-  Micro, and the Due. For Uno boards, use SoftwareSerial instead.
+  Note: Serial1 is only available on board with two software serial ports, such as the SAMD boards (Nano 22 IoT, MKR), the 32U4 boards (Leonardo, Micro), the Due. For Uno boards, use SoftwareSerial instead.
 
   Attach the center pin of a potentiometer to pin A0,
   and the outside pins to +5V and ground. Attach the SIN pin of the
