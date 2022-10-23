@@ -7,8 +7,10 @@ The [Emic2](https://www.parallax.com/product/emic-2-text-to-speech-module/) is a
  To connect the Emic2 to any Arduino, the SOUT goes to the Arduino's RX and the SIN goes to the Arduino's TX. Although the Emic2 is rated to run at 5V, it runs fine on 3.3V as well. Figures 1 and 2 below show an Arduino Nano 33 IoT connected to an Emic2.
 
  ![Schematic drawing of an Emic2 text-to-speech module connected to an Arduino Nano](Emic2_Nano_schem.png)
+
  _Figure 1. Schematic drawing of an Emic2 text-to-speech module connected to an Arduino Nano_
 
  ![Breadboard drawing of an Emic2 text-to-speech module connected to an Arduino Nano](Emic2_Nano_bb.png)
+ 
  _Figure 2. Breadboard drawing of an Emic2 text-to-speech module connected to an Arduino Nano_
  
